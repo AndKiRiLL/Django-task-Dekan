@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Djanfo Shop Form</title>
+    <link rel="stylesheet" href="{% static 'css/styles_form.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Iceberg&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header__wrap">
+                <h1 class="header__wrap__title">Django Shop</h1>
+
+                <a class="header__wrap__li" href="{% url 'page1' %}">Процессоры</a>
+                <a class="header__wrap__li" href="{% url 'page2' %}">Видеокарты</a>
+                <a class="header__wrap__li" href="{% url 'page3' %}">Оперативная память</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="form">
+        <div class="form__container">
+            <div class="form__block">
+
+                <h2 class="form__block__title">Создать товар</h2>
+                <form method="POST" >
+                    {% csrf_token %}
+
+                    <h4 class="form__block__chapter__title">Описание</h4>
+                    {{ input_caption }}
+
+                    <h4 class="form__block__chapter__title">Цена</h4>
+                    {{ input_price }}
+
+                    <h4 class="form__block__chapter__title">Ссылка на картинку</h4>
+                    {{ input_path_img }}
+
+                    <h4 class="form__block__chapter__title">Раздел товаров</h4>
+                    <div class="form__block__chapter__input__radioblock">
+                        {{ input_select }}
+                    </div>
+                    <input class="form__block__button" type="submit" value="Send">
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
